@@ -1,0 +1,21 @@
+---
+- name: fail task on required task 
+  hosts: localhost 
+  tasks: 
+
+    - name: install httpd 
+      yum:
+        name: httpd 
+        state: latest 
+      changed_when: ansible_distribution == 'CentOS'
+
+    - name: create directory 
+      file: 
+        path: /tmp/pavanpanchal
+        state: directory 
+
+    - name: fail task
+      fail: 
+        msg: " task fail for test purpose" 
+
+
